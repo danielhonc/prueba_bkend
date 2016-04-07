@@ -1,0 +1,12 @@
+extends layout
+
+block content
+	h1= title
+	p Welcome to #{title}
+
+	form(method="POST")
+			p Name:
+				input(type="text" name="name" value="#{person.name}")
+			p Name:
+				input(type="text" name="job" value="#{person.job}")
+			p: button Update

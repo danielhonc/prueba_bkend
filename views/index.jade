@@ -1,22 +1,45 @@
 extends layout
 
 block content
-	h1= title
-	p Welcome to #{title}
-	form(method="POST")
-		p Name:
-			input(type="text" name="name")
-		p Name:
-			input(type="text" name="job")
-		p: button Add
+	div.container
+		div.jumbotron
+			div.page-header
+				h3 Prueba Backend Pleisi ****   CRUD PRODUCTOS  ****
+			form.form-horizontal(method='post', role='form')
+				div.form-group 
+					label.col-sm-4 Nombre del Producto:
+					div.col-sm-8
+						input.form-control(
+						type="text",
+						name="producto")
+				div.form-group
+					label.col-sm-4 Descripcion:
+					div.col-sm-8
+						input.form-control(
+						type="text",
+						name="descripcion")
+				div.form-group
+					label.col-sm-4 Precio:
+					div.col-sm-8
+						input.form-control(
+						type="text",
+						name="precio")
+				div.form-group
+					div.col-sm-offset-4.col-sm-8
+						button.btn.btn-primary(type='submit') Agregar
 
-	if people.length > 0
-		ul
-			each person in people
-				li
-					h2=person.name + "(" + person.job + ")"
-					p
-						a(href="/update/#{person._id}") Update	
-						a(href="/delete/#{person._id}") Delete
-	else
-		p No People	
+				div.pull-right
+					a(href='/compras') Compras  
+			
+			h2 Lista de Productos en stock
+
+			if productos.length > 0
+				ul
+					each name in productos
+						li
+							h4="producto:  " + name.producto  + "|   descripcion:  " + name.descripcion + "|   precio:  " + name.precio 
+							p
+								a(href="/update/#{name._id}") Update	
+								a(href="/delete/#{name._id}") Delete
+			else
+				p No Hay Productos	
